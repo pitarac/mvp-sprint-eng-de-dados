@@ -37,7 +37,7 @@ SELECT REGEXP_REPLACE(user_session, '[^a-zA-Z0-9]', '') AS user_session_string F
 SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;
 
 -- Criar uma nova coluna calculada com base nas colunas category_id e product_id
-SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;
+SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;```
 
 ![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png) 
 
