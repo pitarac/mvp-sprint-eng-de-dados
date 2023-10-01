@@ -2,16 +2,18 @@
 
 1. **Identificação da Fonte de Dados:** Começo identificando a fonte de dados principal para o meu projeto. Optei por utilizar um dataset disponível no Kaggle com o seguinte tema: ["eCommerce behavior data from multi-category store"](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store). Este dataset é uma fonte rica de informações sobre o comportamento de compras online em uma loja com várias categorias de produtos.
 
-2. **Configuração de Conexões:** Para acessar esse dataset, criei um bucket no google clound storage conforme imagem abaixo. 
+2. **Configuração de Conexões:** Para armazenar os dados brutos coletados deste dataset, vou usar o Google Cloud Storage. Isso me proporciona um repositório seguro e escalável para os dados iniciais.
 
-2.1 **Criação do Google Clound Storage:**
-![Imagem print screen de uma tela do google na criação do projeto](https://storage.googleapis.com/ecommerce-behavior/google%20storage.png))
+2.1 **Utilização do Google Cloud Storage:**
+
+![Imagem print screen de uma tela do google na criação do projeto](https://storage.googleapis.com/ecommerce-behavior/google%20storage.png)
+
+2.2 **Criação do Bucket**
+
+![Imagem print screen de uma tela do google na criação do projeto]
 
 
-
-3. **Utilização do Google Cloud Storage:** Para armazenar os dados brutos coletados deste dataset, vou usar o Google Cloud Storage. Isso me proporciona um repositório seguro e escalável para os dados iniciais.
-
-4. **Implementação do Google Cloud Dataflow:** Para a coleta eficiente dos dados em tempo real ou batch, vou implementar fluxos de dados usando o Google Cloud Dataflow. Isso garante que os dados sejam capturados de forma contínua e confiável.
+3. **Implementação do Google Cloud Dataflow:** Para a coleta eficiente dos dados em tempo real ou batch, vou implementar fluxos de dados usando o Google Cloud Dataflow. Isso garante que os dados sejam capturados de forma contínua e confiável.
 
 5. **Agendamento de Tarefas:** Em muitos casos, configurarei agendamentos para automatizar a coleta de dados, garantindo que as informações estejam sempre atualizadas.
 
