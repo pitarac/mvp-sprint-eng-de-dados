@@ -14,10 +14,10 @@ Para iniciar a coleta de dados, acessaremos a fonte de dados principal, que é o
 Realizei a extração de dados pela url, criando um job de transferência no Google Storage:
  Print do job 
 
-[Configuraçã do Job](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2001.png)
+![Configuraçã do Job](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2001.png)
 
 
-[Job em Processamento](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2002%20.png)
+![Job em Processamento](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2002%20.png)
 
 
 ### 3. Armazenamento de Dados Brutos
