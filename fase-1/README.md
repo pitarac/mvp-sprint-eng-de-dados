@@ -13,12 +13,4 @@
 ![Imagem print screen de uma tela do google na criação do projeto]
 
 
-3. **Implementação do Google Cloud Dataflow:** Para a coleta eficiente dos dados em tempo real ou batch, vou implementar fluxos de dados usando o Google Cloud Dataflow. Isso garante que os dados sejam capturados de forma contínua e confiável.
-
-5. **Agendamento de Tarefas:** Em muitos casos, configurarei agendamentos para automatizar a coleta de dados, garantindo que as informações estejam sempre atualizadas.
-
 6. **Monitoramento de Integridade:** Implementarei mecanismos de monitoramento para garantir a integridade dos dados coletados deste dataset, incluindo a detecção e o tratamento de erros durante o processo de coleta.
-
-7. **Documentação:** Manterei uma documentação clara de todas as etapas, incluindo detalhes sobre a fonte de dados do Kaggle, conexões, processos de coleta e outros aspectos para referência futura.
-
-Ao concluir esta fase, terei um sistema sólido para buscar e coletar os dados iniciais deste dataset do Kaggle, fornecendo a base necessária para as análises subsequentes em meu projeto de engenharia de dados. Continuarei com a próxima fase, que é a Modelagem de Dados.
