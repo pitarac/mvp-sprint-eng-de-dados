@@ -5,7 +5,7 @@
 2. **Configuração de Conexões:** Para acessar esse dataset, criei um bucket no google clound storage conforme imagem abaixo. 
 
 2.1 **Criação do Google Clound Storage:**
-![Imagem print screen de uma tela do google na criação do projeto](https://storage.cloud.google.com/ecommerce-behavior/google%20storage.png)
+![Imagem print screen de uma tela do google na criação do projeto](https://storage.googleapis.com/ecommerce-behavior/google%20storage.png))
 
 
 
