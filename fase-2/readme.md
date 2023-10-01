@@ -18,28 +18,39 @@ Com base na análise do conjunto de dados, criarei as tabelas necessárias no Go
 
 
 ### 3. Limpeza e Transformação de Dados
+
 Realizarei a limpeza e transformação de dados conforme necessário. Isso pode incluir a remoção de duplicatas, tratamento de valores ausentes e a aplicação de transformações específicas para melhorar a qualidade dos dados.
 
 ```sql
 -- Remover duplicatas e preencher valores ausentes na coluna event_time
 SELECT DISTINCT event_time AS event_time_timestamp FROM dadosecommerce.Out;
 
+```sql
 -- Preencher valores ausentes na coluna category_code com um valor padrão
 SELECT IFNULL(category_code, 'Valor_Padrao') AS category_code_string FROM dadosecommerce.Out;
 
+```sql
 -- Padronizar a coluna brand para maiúsculas
 SELECT UPPER(brand) AS brand_string FROM dadosecommerce.Out;
 
+```sql
 -- Remover caracteres indesejados da coluna user_session
 SELECT REGEXP_REPLACE(user_session, '[^a-zA-Z0-9]', '') AS user_session_string FROM dadosecommerce.Out;
 
+```sql
 -- Converter a coluna price em um tipo de dados FLOAT64
 SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;
 
+```sql
 -- Criar uma nova coluna calculada com base nas colunas category_id e product_id
-SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;```
+SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;
+commerce.Out;
 
+
+#Imagem do tratamento 
 ![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png) 
+
+
 
 ## Considerações Importantes
 
