@@ -11,7 +11,14 @@ O principal objetivo desta fase é adquirir os dados brutos necessários para a 
 Para iniciar a coleta de dados, acessaremos a fonte de dados principal, que é o conjunto de dados disponível no Kaggle com o seguinte tema: ["eCommerce behavior data from multi-category store"](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store).
 
 ### 2. Extração de Dados
-Realizaremos a extração dos dados da fonte. Isso pode envolver o download de arquivos, a consulta a APIs ou a conexão direta a bancos de dados, dependendo do formato da fonte.
+Realizei a extração de dados pela url, criando um job de transferência no Google Storage:
+ Print do job 
+
+[Configuraçã do Job](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2001.png)
+
+
+[Job em Processamento](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/job%2002%20.png)
+
 
 ### 3. Armazenamento de Dados Brutos
 Configuramos previamente o Google Cloud Storage na Fase 01 como o local para armazenar os dados brutos coletados. Os dados coletados serão carregados para o nosso bucket no Google Cloud Storage, onde serão organizados e armazenados de forma segura.
