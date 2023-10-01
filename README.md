@@ -14,7 +14,7 @@
 
 Neste projeto de Engenharia de Dados, estou implementando um pipeline robusto e escalável na nuvem, utilizando a poderosa infraestrutura do Google Cloud. Meu objetivo é buscar, coletar, modelar, carregar e analisar dados de maneira eficiente, fornecendo insights valiosos para minhas tomadas de decisões informadas.
 
-
+[Consultar objetivo do MVP](https://github.com/pitarac/mvp-sprint-eng-de-dados/blob/main/objetivo.md)
 
 ## Fase 1: Busca e Coleta de Dados
 - Nesta etapa, estou usando serviços como o Google Cloud Storage e Dataflow para coletar dados de fontes diversas, como APIs, bancos de dados e feeds em tempo real. Implementei fluxos de dados que garantem a coleta contínua e confiável de informações.
