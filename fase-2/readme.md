@@ -41,8 +41,7 @@ Realizarei a limpeza e transformação de dados conforme necessário. Isso pode 
 ```sql SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;```
 
 -- Criar uma nova coluna calculada com base nas colunas category_id e product_id
- ```sql SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;
-commerce.Out;```
+ ```sql SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;```
 
 
 #Imagem do tratamento 
