@@ -1,44 +1,17 @@
 # Fase 3: Carga de Dados no BigQuery
 
-Nesta fase do projeto, nosso foco é a carga de dados diretamente no BigQuery, o armazém de dados do Google Cloud. Garantir que os dados sejam carregados de maneira eficiente e confiável é fundamental para o sucesso das análises subsequentes.
+- Nesta fase, aproveitei o poder do Google BigQuery para realizar análises diretamente nos dados previamente modelados. Utilizei os Notebooks do Google Cloud para explorar os dados, criar visualizações interativas e executar consultas avançadas com o objetivo de extrair insights relevantes.
 
-## Objetivo
+### Tarefas Realizadas:
+- No Google Cloud Notebooks, explorei detalhadamente os conjuntos de dados modelados no BigQuery.
+- Utilizei bibliotecas de análise de dados em Python, como Pandas e Matplotlib, para criar gráficos, dashboards e relatórios interativos para visualização de dados.
+- Escrevi consultas SQL complexas para responder a perguntas de negócios diretamente no ambiente dos Notebooks do Google Cloud.
+- Identifiquei tendências, padrões e oportunidades por meio da análise dos dados, tudo dentro de um ambiente de desenvolvimento integrado.
 
-O objetivo principal desta fase é levar os dados modelados na Fase 2 para o BigQuery, onde eles estarão prontos para análise em tempo real ou sob demanda.
+### Resultados Alcançados:
+- Obtive insights valiosos que orientaram minhas decisões e as da minha equipe.
+- Compartilhei visualizações e relatórios interativos com partes interessadas para comunicação eficaz dos resultados.
+- Aproveitei as capacidades de análise estatística avançada do Python para aprimorar a compreensão dos dados.
 
-## Passos a Seguir
+Essa fase foi crucial para transformar dados brutos em informações acionáveis, capacitando nossa organização a tomar decisões embasadas em dados precisos e relevantes, tudo de forma conveniente nos Notebooks do Google Cloud.
 
-Aqui estão os passos que seguiremos nesta fase:
-
-### 1. Definir a Tabela de Destino no BigQuery
-
-- Definiremos a tabela de destino no BigQuery onde desejamos carregar os dados.
-- Certificaremos de que a tabela de destino esteja devidamente configurada com o esquema correto.
-
-### 2. Carga de Dados no BigQuery
-
-- Usaremos SQL para realizar a carga de dados diretamente no BigQuery.
-- Inseriremos os dados modelados na tabela de destino especificada.
-
-### 3. Configuração de Permissões
-
-- Certificaremos de que as permissões adequadas estejam configuradas para inserir dados na tabela de destino no BigQuery.
-- Você deve ter as permissões necessárias para executar esta operação com sucesso.
-
-## Código de Exemplo
-
-Aqui está um exemplo de código SQL para realizar a carga de dados no BigQuery:
-
-
--- Carga de Dados no BigQuery
-
--- Defina a tabela de destino no BigQuery onde você deseja carregar os dados
-```sql DECLARE target_table STRING; SET target_table = 'seu_projeto.seu_dataset.sua_tabela_destino';
--- Insira os dados modelados na tabela de destino
-```sql INSERT INTO `project.dataset.table` SELECT * FROM `project.dataset.modelado`;
-
-
- -- Substitua pelos nomes reais dos projetos, datasets e tabelas
-
--- Lembre-se de configurar corretamente as permissões para inserir dados na tabela de destino
--- Você deve ter as permissões adequadas no BigQuery para executar esta operação
