@@ -14,18 +14,33 @@ Antes de iniciar a modelagem, farei uma análise detalhada do conjunto de dados 
 
 ### 2. Criação de Tabelas no BigQuery
 Com base na análise do conjunto de dados, criarei as tabelas necessárias no Google BigQuery. Isso envolverá a definição de esquemas adequados, tipos de dados e chaves primárias, se aplicável.
+![BigQuery com Storage](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/02.png)
+
 
 ### 3. Limpeza e Transformação de Dados
 Realizarei a limpeza e transformação de dados conforme necessário. Isso pode incluir a remoção de duplicatas, tratamento de valores ausentes e a aplicação de transformações específicas para melhorar a qualidade dos dados.
 
-### 4. Indexação e Otimização
-Para garantir um desempenho eficiente das consultas, aplicarei estratégias de indexação e otimização nas tabelas do BigQuery. Isso incluirá a criação de índices em colunas relevantes e a otimização das consultas SQL.
+```sql
+-- Remover duplicatas e preencher valores ausentes na coluna event_time
+SELECT DISTINCT event_time AS event_time_timestamp FROM dadosecommerce.Out;
 
-### 5. Definição de Visualizações e Tabelas Resumidas
-Para facilitar a análise, criarei visualizações e tabelas resumidas no BigQuery. Isso ajudará na obtenção de insights mais rapidamente, evitando consultas complexas repetitivas.
+-- Preencher valores ausentes na coluna category_code com um valor padrão
+SELECT IFNULL(category_code, 'Valor_Padrao') AS category_code_string FROM dadosecommerce.Out;
 
-### 6. Documentação do Modelo de Dados
-Manterei documentação detalhada sobre o modelo de dados, incluindo a descrição das tabelas, campos, relações e quaisquer decisões de modelagem tomadas. Isso será útil para colaboradores e futuras referências.
+-- Padronizar a coluna brand para maiúsculas
+SELECT UPPER(brand) AS brand_string FROM dadosecommerce.Out;
+
+-- Remover caracteres indesejados da coluna user_session
+SELECT REGEXP_REPLACE(user_session, '[^a-zA-Z0-9]', '') AS user_session_string FROM dadosecommerce.Out;
+
+-- Converter a coluna price em um tipo de dados FLOAT64
+SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;
+
+-- Criar uma nova coluna calculada com base nas colunas category_id e product_id
+SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;
+
+![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png)
+
 
 ## Considerações Importantes
 
