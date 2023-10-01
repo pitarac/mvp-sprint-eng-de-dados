@@ -1,61 +1,31 @@
-# Fase 2: Modelagem de Dados com BigQuery
+Claro, vou reescrever a Fase 2 com o foco na coleta de dados:
 
-Nesta fase do projeto, estarei detalhando como realizaremos a modelagem de dados usando o Google BigQuery. A modelagem de dados desempenha um papel fundamental na transformação dos dados brutos em informações valiosas e prontas para análise.
+```markdown
+# Fase 2: Coleta de Dados
+
+Nesta fase do projeto, concentraremos nossos esforços na coleta de dados essenciais para a análise de comportamento de consumidores em compras online.
 
 ## Objetivo
-O objetivo principal desta fase é criar um modelo de dados eficiente e bem estruturado no BigQuery, que nos permitirá realizar análises significativas dos dados de comportamento do consumidor em compras online.
+O principal objetivo desta fase é adquirir os dados brutos necessários para a análise, provenientes do conjunto de dados "eCommerce behavior data from multi-category store".
 
 ## Passos a Seguir
 
-### 1. Análise do Conjunto de Dados
-Antes de iniciar a modelagem, farei uma análise detalhada do conjunto de dados disponível. Isso incluirá a compreensão das tabelas, colunas, tipos de dados e relações entre as tabelas, se aplicável.
+### 1. Acesso à Fonte de Dados
+Para iniciar a coleta de dados, acessaremos a fonte de dados principal, que é o conjunto de dados disponível no Kaggle com o seguinte tema: ["eCommerce behavior data from multi-category store"](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store).
 
+### 2. Extração de Dados
+Realizaremos a extração dos dados da fonte. Isso pode envolver o download de arquivos, a consulta a APIs ou a conexão direta a bancos de dados, dependendo do formato da fonte.
 
+### 3. Armazenamento de Dados Brutos
+Configuramos previamente o Google Cloud Storage na Fase 01 como o local para armazenar os dados brutos coletados. Os dados coletados serão carregados para o nosso bucket no Google Cloud Storage, onde serão organizados e armazenados de forma segura.
 
-### 2. Criação de Tabelas no BigQuery
-Com base na análise do conjunto de dados, criarei as tabelas necessárias no Google BigQuery. Isso envolverá a definição de esquemas adequados, tipos de dados e chaves primárias, se aplicável.
-![BigQuery com Storage](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/02.png)
+### 4. Documentação
+Durante o processo de coleta, documentamos todos os detalhes relevantes, incluindo a fonte dos dados, como foram extraídos, quaisquer problemas encontrados durante a coleta e quaisquer transformações preliminares realizadas.
 
+### 5. Monitoramento
+Estabelecemos um sistema de monitoramento para garantir que a coleta de dados seja contínua e confiável. Qualquer problema que surgir durante o processo de coleta será identificado e tratado prontamente.
 
-### 3. Limpeza e Transformação de Dados
+Esta fase de coleta de dados é crucial para o sucesso do projeto, pois garante que tenhamos acesso aos dados necessários para análises futuras. Estou ansioso para continuar e transformar esses dados brutos em informações valiosas!
+```
 
-Realizarei a limpeza e transformação de dados conforme necessário. Isso pode incluir a remoção de duplicatas, tratamento de valores ausentes e a aplicação de transformações específicas para melhorar a qualidade dos dados.
-
-
--- Remover duplicatas e preencher valores ausentes na coluna event_time <br>
-```sql SELECT DISTINCT event_time AS event_time_timestamp FROM dadosecommerce.Out;```
-
-
--- Preencher valores ausentes na coluna category_code com um valor padrão  <br>
- ```sql SELECT IFNULL(category_code, 'Valor_Padrao') AS category_code_string FROM dadosecommerce.Out;```
-
-
--- Padronizar a coluna brand para maiúsculas  <br>
-```sql SELECT UPPER(brand) AS brand_string FROM dadosecommerce.Out;```
-
-
--- Remover caracteres indesejados da coluna user_session
-```sql SELECT REGEXP_REPLACE(user_session, '[^a-zA-Z0-9]', '') AS user_session_string FROM dadosecommerce.Out;```
-
--- Converter a coluna price em um tipo de dados FLOAT64
-```sql SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;```
-
--- Criar uma nova coluna calculada com base nas colunas category_id e product_id
- ```sql SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;```
-
-
-#Imagem do tratamento 
-![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png) 
-
-
-
-## Considerações Importantes
-
-- **Segurança dos Dados:** Os dados não possuem informações sensíveis ou que sejam regulamentadas pela LGPD (Lei Geral de Proteção de Dados). Portanto, não é necessário tratamento especial em relação à privacidade.
-
-- **Escalabilidade:** O modelo de dados é projetado para ser escalável, permitindo a adição de novos dados à medida que eles estiverem disponíveis.
-
-- **Colaboração:** Este projeto faz parte de uma disciplina do curso de Cientista de Dados da PUC-RIO e é de autoria exclusiva do seu criador. Após avaliação, está autorizado o ```git clone``` , desde que os créditos de sua criação sejam mantidos e respeitados.
-
-Esta fase de modelagem de dados é crucial para o sucesso do projeto, pois define a base para análises futuras. Estou empolgado para continuar avançando e transformar nossos dados brutos em insights valiosos!
-
+Esta descrição enfatiza a coleta de dados como o foco principal da Fase 2 e inclui os passos específicos para essa etapa do projeto. Lembre-se de personalizar esta descrição com detalhes específicos do seu projeto. Se tiver mais perguntas ou precisar de informações adicionais, fique à vontade para perguntar.
