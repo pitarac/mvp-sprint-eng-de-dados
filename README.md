@@ -9,7 +9,7 @@
 
 # Meu Pipeline de Dados na Nuvem usando Google Cloud e Objetivo
 
-Olá pessoal! Meu nome é Paulo Leocádia e neste projeto de Engenharia de Dados, estou construindo um pipeline poderoso na nuvem usando o Google Cloud. Meu objetivo é coletar, modelar, carregar e analisar dados de forma eficiente para obter insights valiosos.
+Olá pessoal! Meu nome é Paulo Henrique e neste projeto de Engenharia de Dados, estou construindo um pipeline na nuvem usando o Google Cloud. Meu objetivo é coletar, modelar, carregar e analisar dados de forma eficiente para obter insights valiosos.
 
 [Leia mais sobre o objetivo do MVP](https://github.com/pitarac/mvp-sprint-eng-de-dados/blob/main/objetivo.md)
 
