@@ -29,11 +29,11 @@ Manterei documentação detalhada sobre o modelo de dados, incluindo a descriç�
 
 ## Considerações Importantes
 
-- **Segurança dos Dados:** Os dados não possuem informações sensiveis ou que sejam regulamentados pela LGPD. 
+- **Segurança dos Dados:** Os dados não possuem informações sensíveis ou que sejam regulamentadas pela LGPD (Lei Geral de Proteção de Dados). Portanto, não é necessário tratamento especial em relação à privacidade.
 
 - **Escalabilidade:** O modelo de dados é projetado para ser escalável, permitindo a adição de novos dados à medida que eles estiverem disponíveis.
 
-- **Colaboração:** Este projeto faz parte de uma disciplina do curso de Cientista de Dados da PUC-RIO, sendo assim não pode receber colaboração de qualquer pessoa que não seja seu autor, após avaiação está autorizado o ```git clone``` desde que mantido os créditos de sua criação. 
+- **Colaboração:** Este projeto faz parte de uma disciplina do curso de Cientista de Dados da PUC-RIO e é de autoria exclusiva do seu criador. Após avaliação, está autorizado o ```git clone``` , desde que os créditos de sua criação sejam mantidos e respeitados.
 
 Esta fase de modelagem de dados é crucial para o sucesso do projeto, pois define a base para análises futuras. Estou empolgado para continuar avançando e transformar nossos dados brutos em insights valiosos!
 
