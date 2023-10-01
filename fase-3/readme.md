@@ -1,55 +1,44 @@
-# Fase 3: Carga de Dados
+# Fase 3: Carga de Dados no BigQuery
 
-Nesta fase do projeto, nosso foco é a carga de dados nos armazéns de dados do Google Cloud. Garantir que os dados sejam carregados de maneira eficiente e confiável é fundamental para o sucesso das análises subsequentes.
+Nesta fase do projeto, nosso foco é a carga de dados diretamente no BigQuery, o armazém de dados do Google Cloud. Garantir que os dados sejam carregados de maneira eficiente e confiável é fundamental para o sucesso das análises subsequentes.
 
 ## Objetivo
 
-O objetivo principal desta fase é levar os dados modelados na Fase 2 para os armazéns de dados do Google Cloud, como o BigQuery ou o Cloud SQL. Isso nos permitirá acessar os dados de maneira conveniente e realizar análises em tempo real ou sob demanda.
+O objetivo principal desta fase é levar os dados modelados na Fase 2 para o BigQuery, onde eles estarão prontos para análise em tempo real ou sob demanda.
 
 ## Passos a Seguir
 
 Aqui estão os passos que seguiremos nesta fase:
 
-### 1. Seleção de Armazéns de Dados
+### 1. Definir a Tabela de Destino no BigQuery
 
-- Escolheremos os armazéns de dados apropriados no Google Cloud para a carga dos dados modelados.
-- Consideraremos fatores como desempenho, escalabilidade e custos.
+- Definiremos a tabela de destino no BigQuery onde desejamos carregar os dados.
+- Certificaremos de que a tabela de destino esteja devidamente configurada com o esquema correto.
 
-### 2. Configuração do Processo de Carga
+### 2. Carga de Dados no BigQuery
 
-- Configuraremos o processo de carga de dados usando o Google Cloud Dataflow ou serviços similares, dependendo dos requisitos do projeto.
-- Definiremos as transformações necessárias durante a carga, se aplicável.
+- Usaremos SQL para realizar a carga de dados diretamente no BigQuery.
+- Inseriremos os dados modelados na tabela de destino especificada.
 
-### 3. Execução da Carga
+### 3. Configuração de Permissões
 
-- Iniciaremos o processo de carga de dados, garantindo que ele seja confiável e eficiente.
-- Acompanharemos o progresso da carga e resolveremos quaisquer problemas que surjam.
+- Certificaremos de que as permissões adequadas estejam configuradas para inserir dados na tabela de destino no BigQuery.
+- Você deve ter as permissões necessárias para executar esta operação com sucesso.
 
 ## Código de Exemplo
 
-Aqui está um exemplo de código que representa a configuração básica de um processo de carga de dados usando o Google Cloud Dataflow:
+Aqui está um exemplo de código SQL para realizar a carga de dados no BigQuery:
 
-```python
-# Configuração do pipeline de carga de dados
-pipeline_options = PipelineOptions.from_dictionary({
-    'project': 'seu-projeto',
-    'runner': 'DataflowRunner',
-    'temp_location': 'gs://seu-bucket/temp',
-    'staging_location': 'gs://seu-bucket/staging',
-})
 
-# Definição do pipeline
-pipeline = beam.Pipeline(options=pipeline_options)
+-- Carga de Dados no BigQuery
 
-# Leitura de dados modelados
-data_modelado = (
-    pipeline
-    | 'Leitura de Dados Modelados' >> beam.io.Read(beam.io.BigQuerySource(query='SELECT * FROM tabela_modelada'))
-)
+-- Defina a tabela de destino no BigQuery onde você deseja carregar os dados
+```sql DECLARE target_table STRING; SET target_table = 'seu_projeto.seu_dataset.sua_tabela_destino';
+-- Insira os dados modelados na tabela de destino
+```sql INSERT INTO `project.dataset.table` SELECT * FROM `project.dataset.modelado`;
 
-# Configuração das transformações e carga nos armazéns de dados
-# ... (insira suas transformações aqui)
 
-# Execução do pipeline
-result = pipeline.run()
-result.wait_until_finish()
+ -- Substitua pelos nomes reais dos projetos, datasets e tabelas
+
+-- Lembre-se de configurar corretamente as permissões para inserir dados na tabela de destino
+-- Você deve ter as permissões adequadas no BigQuery para executar esta operação
