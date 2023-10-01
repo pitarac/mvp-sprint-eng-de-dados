@@ -39,8 +39,7 @@ SELECT CAST(price AS FLOAT64) AS price_float FROM dadosecommerce.Out;
 -- Criar uma nova coluna calculada com base nas colunas category_id e product_id
 SELECT category_id, product_id, category_id * product_id AS nova_coluna FROM dadosecommerce.Out;
 
-![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png)
-
+![tabela tratada](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/tratadas.png) 
 
 ## Considerações Importantes
 
