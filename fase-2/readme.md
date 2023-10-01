@@ -1,6 +1,3 @@
-Claro, vou reescrever a Fase 2 com o foco na coleta de dados:
-
-```markdown
 # Fase 2: Coleta de Dados
 
 Nesta fase do projeto, concentraremos nossos esforços na coleta de dados essenciais para a análise de comportamento de consumidores em compras online.
@@ -26,6 +23,3 @@ Durante o processo de coleta, documentamos todos os detalhes relevantes, incluin
 Estabelecemos um sistema de monitoramento para garantir que a coleta de dados seja contínua e confiável. Qualquer problema que surgir durante o processo de coleta será identificado e tratado prontamente.
 
 Esta fase de coleta de dados é crucial para o sucesso do projeto, pois garante que tenhamos acesso aos dados necessários para análises futuras. Estou ansioso para continuar e transformar esses dados brutos em informações valiosas!
-```
-
-Esta descrição enfatiza a coleta de dados como o foco principal da Fase 2 e inclui os passos específicos para essa etapa do projeto. Lembre-se de personalizar esta descrição com detalhes específicos do seu projeto. Se tiver mais perguntas ou precisar de informações adicionais, fique à vontade para perguntar.
