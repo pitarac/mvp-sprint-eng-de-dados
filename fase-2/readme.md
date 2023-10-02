@@ -21,12 +21,10 @@ Realizei a extração de dados pela url, criando um job de transferência no Goo
 
 
 ### 3. Armazenamento de Dados Brutos
-Configuramos previamente o Google Cloud Storage na Fase 01 como o local para armazenar os dados brutos coletados. Os dados coletados serão carregados para o nosso bucket no Google Cloud Storage, onde serão organizados e armazenados de forma segura.
+Configuramos previamente o Google Cloud Storage na Fase 01 como o local para armazenar os dados brutos coletados. Os dados coletados foram carregados para o nosso bucket no Google Cloud Storage, onde serão organizados e armazenados de forma segura.
 
-### 4. Documentação
-Durante o processo de coleta, documentamos todos os detalhes relevantes, incluindo a fonte dos dados, como foram extraídos, quaisquer problemas encontrados durante a coleta e quaisquer transformações preliminares realizadas.
 
-### 5. Monitoramento
+### 4. Monitoramento
 Estabelecemos um sistema de monitoramento para garantir que a coleta de dados seja contínua e confiável. Qualquer problema que surgir durante o processo de coleta será identificado e tratado prontamente.
 
 Esta fase de coleta de dados é crucial para o sucesso do projeto, pois garante que tenhamos acesso aos dados necessários para análises futuras. Estou ansioso para continuar e transformar esses dados brutos em informações valiosas!
