@@ -57,5 +57,19 @@ Olá pessoal! Meu nome é Paulo Henrique e neste projeto de Engenharia de Dados,
 Em resumo, meu pipeline de dados na nuvem com o Google Cloud é uma solução abrangente para adquirir, processar e analisar dados de maneira eficaz, permitindo decisões embasadas em dados precisos. Vou continuar aprimorando para atender às necessidades em constante evolução.
 
 ## Referências
-- [Documentação do Google Cloud](https://cloud.google.com/docs)
+# Referências
 
+- **Google Cloud Platform (GCP):**
+   - [Página Inicial do Google Cloud](https://cloud.google.com/)
+   - [Google Cloud Storage](https://cloud.google.com/storage) para armazenamento de dados brutos.
+   - [Google BigQuery](https://cloud.google.com/bigquery) para consultas e manipulação de dados.
+   - [Google Cloud Dataflow](https://cloud.google.com/dataflow) para ETL (Extração, Transformação e Carga).
+
+- **GitHub de Paulo Henrique (GitHub):**
+   - [GitHub de Paulo Henrique](https://github.com/pitarac) - Você pode encontrar código relacionado ao projeto aqui.
+
+- **Kaggle:**
+   - [Kaggle](https://www.kaggle.com/) - Uma plataforma popular para competições de ciência de dados e recursos relacionados a dados.
+
+- **Objetivo do MVP:**
+   - [Leia mais sobre o objetivo do MVP]([inserir-link-aqui](https://pucrio.grupoa.education/plataforma/course/375738/content/4736775)) - Este link deve apontar para mais detalhes sobre o objetivo do seu projeto de Engenharia de Dados.
