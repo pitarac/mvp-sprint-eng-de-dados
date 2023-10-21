@@ -44,7 +44,7 @@ user_sessions.set_index('user_session', inplace=True)
 events = raw_events_data[['event_time','event_type','product_id','user_session']]
 ```
 
-[Acesse o notebook criado para o projeto](fase-5/notebook) 
+[Acesse o notebook criado para o projeto](sprint-3.ipynb) 
 
 *Outras perguntas que estava no objetivo foram comprometidas e ficarão para uma atualização*
 
