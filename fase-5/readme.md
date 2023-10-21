@@ -44,7 +44,7 @@ user_sessions.set_index('user_session', inplace=True)
 events = raw_events_data[['event_time','event_type','product_id','user_session']]
 ```
 
-[Acesse o notebook criado para o projeto]([https://colab.research.google.com/drive/16WHKvFVWxa2PZaDH547AUSYhhh9hR2P9?usp=sharing](https://github.com/pitarac/mvp-sprint-eng-de-dados/blob/main/fase-5/notebook)) 
+[Acesse o notebook criado para o projeto](fase-5/notebook)) 
 
 *Outras perguntas que estava no objetivo foram comprometidas e ficarão para uma atualização*
 
