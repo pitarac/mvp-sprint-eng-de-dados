@@ -36,7 +36,7 @@
       ]
     },
     {
-      "cell_type": "code",
+      "cell_type": "markdown",
       "source": [
         "# **Análise das Principais Métricas de E-commerce**\n",
         "\n",
@@ -53,10 +53,8 @@
         "Agora, sem mais delongas, vamos mergulhar no notebook.\n"
       ],
       "metadata": {
-        "id": "ZadDHod8DFGp"
-      },
-      "execution_count": null,
-      "outputs": []
+        "id": "jqoWnYu5I9hg"
+      }
     },
     {
       "cell_type": "markdown",
@@ -97,10 +95,34 @@
           "shell.execute_reply": "2022-04-12T14:20:18.114732Z"
         },
         "trusted": true,
-        "id": "UoQgf72mDFGs"
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 399
+        },
+        "id": "UoQgf72mDFGs",
+        "outputId": "8402f7d7-eab9-4c51-8d29-c09576f79e84"
       },
-      "execution_count": null,
-      "outputs": []
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "FileNotFoundError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-2-ad12fd3d7d85>\u001b[0m in \u001b[0;36m<cell line: 12>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     10\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     11\u001b[0m \u001b[0;31m# Carregando os dados em um DataFrame pandas\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 12\u001b[0;31m \u001b[0mraw_events_data\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'2019-Nov.csv'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mparse_dates\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'event_time'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mnrows\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m10000000\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     13\u001b[0m \u001b[0mraw_events_data\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0minfo\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/util/_decorators.py\u001b[0m in \u001b[0;36mwrapper\u001b[0;34m(*args, **kwargs)\u001b[0m\n\u001b[1;32m    209\u001b[0m                 \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    210\u001b[0m                     \u001b[0mkwargs\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mnew_arg_name\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnew_arg_value\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 211\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mfunc\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    212\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    213\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mcast\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mF\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mwrapper\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/util/_decorators.py\u001b[0m in \u001b[0;36mwrapper\u001b[0;34m(*args, **kwargs)\u001b[0m\n\u001b[1;32m    329\u001b[0m                     \u001b[0mstacklevel\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mfind_stack_level\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    330\u001b[0m                 )\n\u001b[0;32m--> 331\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mfunc\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    332\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    333\u001b[0m         \u001b[0;31m# error: \"Callable[[VarArg(Any), KwArg(Any)], Any]\" has no\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36mread_csv\u001b[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)\u001b[0m\n\u001b[1;32m    948\u001b[0m     \u001b[0mkwds\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mupdate\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mkwds_defaults\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    949\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 950\u001b[0;31m     \u001b[0;32mreturn\u001b[0m \u001b[0m_read\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    951\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    952\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m_read\u001b[0;34m(filepath_or_buffer, kwds)\u001b[0m\n\u001b[1;32m    603\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    604\u001b[0m     \u001b[0;31m# Create the parser.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 605\u001b[0;31m     \u001b[0mparser\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mTextFileReader\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    606\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    607\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mchunksize\u001b[0m \u001b[0;32mor\u001b[0m \u001b[0miterator\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m__init__\u001b[0;34m(self, f, engine, **kwds)\u001b[0m\n\u001b[1;32m   1440\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1441\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhandles\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0mIOHandles\u001b[0m \u001b[0;34m|\u001b[0m \u001b[0;32mNone\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1442\u001b[0;31m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_engine\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_make_engine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mengine\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1443\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1444\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mclose\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m->\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m_make_engine\u001b[0;34m(self, f, engine)\u001b[0m\n\u001b[1;32m   1733\u001b[0m                 \u001b[0;32mif\u001b[0m \u001b[0;34m\"b\"\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mmode\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1734\u001b[0m                     \u001b[0mmode\u001b[0m \u001b[0;34m+=\u001b[0m \u001b[0;34m\"b\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1735\u001b[0;31m             self.handles = get_handle(\n\u001b[0m\u001b[1;32m   1736\u001b[0m                 \u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1737\u001b[0m                 \u001b[0mmode\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.10/dist-packages/pandas/io/common.py\u001b[0m in \u001b[0;36mget_handle\u001b[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\u001b[0m\n\u001b[1;32m    854\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mencoding\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0;34m\"b\"\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmode\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    855\u001b[0m             \u001b[0;31m# Encoding\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 856\u001b[0;31m             handle = open(\n\u001b[0m\u001b[1;32m    857\u001b[0m                 \u001b[0mhandle\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    858\u001b[0m                 \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmode\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] No such file or directory: '2019-Nov.csv'"
+          ]
+        }
+      ]
     },
     {
       "cell_type": "markdown",
@@ -139,21 +161,20 @@
         "# Criando as Tabelas\n",
         "\n",
         "## Tabela `products`\n",
-        "```python\n",
+        "python\n",
         "products = raw_events_data[['product_id', 'category_id', 'category_code', 'brand', 'price']].drop_duplicates()\n",
         "products.set_index('product_id', inplace=True)\n",
-        "```\n",
+        "\n",
         "\n",
         "## Tabela `user_sessions`\n",
-        "```python\n",
+        "python\n",
         "user_sessions = raw_events_data[['user_session', 'user_id']].drop_duplicates()\n",
         "user_sessions.set_index('user_session', inplace=True)\n",
-        "```\n",
+        "\n",
         "\n",
         "## Tabela `events`\n",
-        "```python\n",
-        "events = raw_events_data[['event_time', 'event_type', 'product_id', 'user_session']]\n",
-        "````"
+        "python\n",
+        "events = raw_events_data[['event_time', 'event_type', 'product_id', 'user_session']]\n"
       ],
       "metadata": {
         "execution": {
@@ -164,10 +185,27 @@
           "shell.execute_reply": "2022-04-12T14:20:29.563503Z"
         },
         "trusted": true,
-        "id": "evlmafVADFGt"
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 250
+        },
+        "id": "evlmafVADFGt",
+        "outputId": "9db05fe7-a765-468a-fd00-19e66c25885d"
       },
-      "execution_count": null,
-      "outputs": []
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-1-631c4c692cc8>\u001b[0m in \u001b[0;36m<cell line: 4>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;31m## Tabela `products`\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0mpython\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      5\u001b[0m \u001b[0mproducts\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mraw_events_data\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'product_id'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'category_id'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'category_code'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'brand'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'price'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdrop_duplicates\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mproducts\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mset_index\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'product_id'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0minplace\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mTrue\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'python' is not defined"
+          ]
+        }
+      ]
     },
     {
       "cell_type": "markdown",
@@ -231,7 +269,6 @@
         "# 2) Agrupar todos os eventos de compra pelo `product_id`\n",
         "# 3) Somar o preço de todas as suas vendas\n",
         "\n",
-        "```python\n",
         "events_on_products = events.merge(products, how='left', left_on = 'product_id', right_index=True)\n",
         "events_on_products[events_on_products['event_type'] == 'purchase'][['product_id', 'price']].groupby(by='product_id').sum().sort_values(by='price', ascending=False).head(10).plot(kind='bar', title='Top 10 Produtos Por Receita', xlabel='Product_id', ylabel='Receita Total ($)')\n"
       ],
@@ -252,13 +289,13 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3 > Highest Earnings Per Session </h3>\n",
+        "## Maior Lucro por Sessão\n",
         "\n",
-        "Now, total revenue is not a meaningful metric on its own, especially if we ignore the number of sessions that landed on the product page.\n",
+        "Agora, a receita total não é uma métrica significativa por si só, especialmente se ignorarmos o número de sessões que chegaram à página do produto.\n",
         "\n",
-        "After all, if you are sending a lot of traffic to a page that is doing a poor job at converting users, you could easily be leaving money on the table.\n",
+        "Afinal, se você está enviando muito tráfego para uma página que não está convertendo bem os usuários, pode estar deixando dinheiro na mesa facilmente.\n",
         "\n",
-        "So, to account for the fact that different products have different conversion rates, let's find out what are the top 10 products by earnings per session."
+        "Portanto, para levar em conta o fato de que diferentes produtos têm diferentes taxas de conversão, vamos descobrir quais são os top 10 produtos por lucro por sessão.\n"
       ],
       "metadata": {
         "id": "G_9311hIDFGu"
@@ -267,24 +304,32 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Created a dataframe to find out the total number of views per product_id\n",
+        "\n",
+        "# 1) Criei um DataFrame para descobrir o número total de visualizações por product_id\n",
+        "\n",
         "\n",
         "num_of_views = pd.DataFrame(\n",
-        "    data = events_on_products[events_on_products['event_type'] == 'view']['product_id'].value_counts()\n",
+        "    data=events_on_products[events_on_products['event_type'] == 'view']['product_id'].value_counts()\n",
         ")\n",
-        "num_of_views.rename(columns={'product_id':'total_views'},inplace=True)\n",
+        "num_of_views.rename(columns={'product_id': 'total_views'}, inplace=True)\n",
         "\n",
-        "# 2) Created a dataframe to find out how much each product made in revenue\n",
         "\n",
-        "revenue_per_product = events_on_products[events_on_products['event_type'] == 'purchase'][['product_id','price']].groupby(by='product_id').sum().sort_values(by='price',ascending=False)\n",
-        "revenue_per_product.rename(columns={'price':'total_revenue'},inplace=True)\n",
+        "# 2) Criei um DataFrame para descobrir quanto cada produto gerou em receita\n",
         "\n",
-        "# 3) Merged both of the dataframes above in order to group products by their id, and then divided the total revenue by the number of views\n",
         "\n",
-        "revenue_and_views = revenue_per_product.merge(num_of_views,left_index=True,right_index=True)\n",
-        "revenue_per_view = revenue_and_views['total_revenue']/revenue_and_views['total_views']\n",
+        "revenue_per_product = events_on_products[events_on_products['event_type'] == 'purchase'][['product_id', 'price']].groupby(by='product_id').sum().sort_values(by='price', ascending=False)\n",
+        "revenue_per_product.rename(columns={'price': 'total_revenue'}, inplace=True)\n",
         "\n",
-        "revenue_per_view.sort_values(ascending=False).head(10).plot(kind='bar',title='Top 10 Products by Earnings Per Session',xlabel='Product_id',ylabel='Average Earnings Per Session ($)')"
+        "\n",
+        "# 3) Mesclando os dois DataFrames acima para agrupar produtos por seu ID, e depois dividindo a receita total pelo número de visualizações\n",
+        "\n",
+        "\n",
+        "revenue_and_views = revenue_per_product.merge(num_of_views, left_index=True, right_index=True)\n",
+        "revenue_per_view = revenue_and_views['total_revenue'] / revenue_and_views['total_views']\n",
+        "\n",
+        "revenue_per_view.sort_values(ascending=False).head(10).plot(kind='bar', title='Top 10 Produtos por Lucro por Sessão', xlabel='Product_id', ylabel='Lucro Médio por Sessão ($)')\n",
+        "\n",
+        "\n"
       ],
       "metadata": {
         "execution": {
@@ -303,11 +348,11 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3> Conversion Rates Per Product </h3>\n",
+        "## Taxas de Conversão por Produto\n",
         "\n",
-        "We can also find out what are the products with the highest conversion rates, since these products could also be worth pushing traffic to and their landing page designs be used as controls in A/B split tests.\n",
+        "Também podemos descobrir quais são os produtos com as maiores taxas de conversão, já que esses produtos também podem valer a pena direcionar tráfego para eles, e seus designs de página de destino podem ser usados como controles em testes A/B.\n",
         "\n",
-        "So let's discover what are the top 10 products with the highest conversion rates."
+        "Então, vamos descobrir quais são os top 10 produtos com as maiores taxas de conversão.\n"
       ],
       "metadata": {
         "id": "5MSyXS-dDFGu"
@@ -316,20 +361,28 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Found out how many sales each product made\n",
+        "\n",
+        "# 1) Descobri quantas vendas cada produto fez\n",
+        "\n",
         "\n",
         "num_of_sales = pd.Series(events_on_products[events_on_products['event_type'] == 'purchase']['product_id'].value_counts())\n",
-        "num_of_sales.rename('total_sales',inplace=True)\n",
+        "num_of_sales.rename('total_sales', inplace=True)\n",
         "\n",
-        "# 2) Grouped the number of views and the number of sales by the product_id\n",
         "\n",
-        "product_data = revenue_and_views.merge(num_of_sales,right_index=True,left_index=True)\n",
+        "# 2) Agrupei o número de visualizações e o número de vendas pelo `product_id`\n",
         "\n",
-        "# 3) Divided the number of sales by the number of views and found out the conversion rate of all the products\n",
         "\n",
-        "cvr = pd.Series(product_data['total_sales']/product_data['total_views'])\n",
+        "product_data = revenue_and_views.merge(num_of_sales, right_index=True, left_index=True)\n",
+        "\n",
+        "\n",
+        "# 3) Dividi o número de vendas pelo número de visualizações e descobri a taxa de conversão de todos os produtos\n",
+        "\n",
+        "\n",
+        "cvr = pd.Series(product_data['total_sales'] / product_data['total_views'])\n",
         "top_10_cvr = cvr.sort_values(ascending=False).head(10)\n",
-        "top_10_cvr.plot(kind='bar',title='Top 10 Products by Conversion Rates',xlabel='Product_id',ylabel='Conversion Rate (from 0 to 1)')"
+        "top_10_cvr.plot(kind='bar', title='Top 10 Produtos por Taxas de Conversão', xlabel='Product_id', ylabel='Taxa de Conversão (de 0 a 1)')\n",
+        "\n",
+        "\n"
       ],
       "metadata": {
         "execution": {
@@ -348,9 +401,9 @@
     {
       "cell_type": "markdown",
       "source": [
-        "As you can see, these products have a 100% conversion rate, and that's not an error in the code or in the analysis.\n",
+        "Como você pode ver, esses produtos têm uma taxa de conversão de 100%, e isso não é um erro no código ou na análise.\n",
         "\n",
-        "This happened because these products only have 1 view event in the analyzed timeframe and - as luck would have it - this view resulted in a purchase. However, if we could load more data, I'm certain this pattern would not hold true.\n"
+        "Isso aconteceu porque esses produtos têm apenas 1 evento de visualização no período de análise e, por sorte, essa visualização resultou em uma compra. No entanto, se pudéssemos carregar mais dados, estou certo de que esse padrão não se manteria verdadeiro.\n"
       ],
       "metadata": {
         "id": "tpVPGhuPDFGu"
@@ -359,13 +412,13 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3> Products That Sell Well Together </h3>\n",
+        "## Produtos que Vendem Bem Juntos\n",
         "\n",
-        "Upsells, downsells, and cross-sells are one of the most reliable ways to increase the average cart value of the customer.\n",
+        "Ofertas adicionais, ofertas reduzidas e vendas cruzadas são uma das maneiras mais confiáveis de aumentar o valor médio do carrinho do cliente.\n",
         "\n",
-        "But in order to optimize them, the products offered cannot be picked at random. After all, each and every product caters to different customer avatars, and trying to use a one size fits all approach on the upsell path is a guaranteed way to leave money on the table.\n",
+        "Mas, para otimizá-los, os produtos oferecidos não podem ser escolhidos aleatoriamente. Afinal, cada produto atende a diferentes perfis de clientes, e tentar usar uma abordagem única para todos na jornada de venda adicional é uma maneira garantida de deixar dinheiro na mesa.\n",
         "\n",
-        "So let's dig into the data and find out what products users tend to buy in the same session."
+        "Então, vamos analisar os dados e descobrir quais produtos os usuários costumam comprar na mesma sessão.\n"
       ],
       "metadata": {
         "id": "OeEjMTL2DFGv"
@@ -374,58 +427,57 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Merged the user_sessions table with the events table\n",
+        "# 1) Juntei a tabela user_sessions com a tabela events\n",
         "\n",
-        "sessions_on_events = user_sessions.merge(events,how='left',left_on='user_session',right_on='user_session')\n",
+        "sessions_on_events = user_sessions.merge(events, how='left', left_on='user_session', right_on='user_session')\n",
         "\n",
-        "# 2) Filtered the table above looking for purchase events, then counted the number of items bought per user_session\n",
+        "# 2) Filtrando a tabela acima em busca de eventos de compra e, em seguida, contei o número de itens comprados por sessão de usuário\n",
         "\n",
         "items_bought_per_session = pd.DataFrame(sessions_on_events[sessions_on_events['event_type'] == 'purchase']['user_session'].value_counts())\n",
         "items_bought_per_session.reset_index(inplace=True)\n",
-        "items_bought_per_session.rename(columns={'user_session':'items_bought','index':'user_session'},inplace=True)\n",
+        "items_bought_per_session.rename(columns={'user_session': 'items_bought', 'index': 'user_session'}, inplace=True)\n",
         "items_bought_per_session.head(5)\n",
         "\n",
-        "# 3) Created a table full of sessions with more than 1 item purchased\n",
+        "# 3) Criei uma tabela com sessões que tiveram mais de 1 item comprado\n",
         "\n",
-        "session_purchases = items_bought_per_session[items_bought_per_session['items_bought']>=2].merge(\n",
+        "session_purchases = items_bought_per_session[items_bought_per_session['items_bought'] >= 2].merge(\n",
         "    sessions_on_events[sessions_on_events['event_type'] == 'purchase'],\n",
         "    how='left',\n",
         "    left_on='user_session',\n",
-        "    right_on='user_session')[['user_session','items_bought','product_id']]\n",
+        "    right_on='user_session')[['user_session', 'items_bought', 'product_id']]\n",
         "\n",
-        "# 4) Bundle together in a set all the products (by id) bought in each of the user sessions where the number of items purchased was greater than 1.\n",
+        "# 4) Agrupei em um conjunto todos os produtos (por id) comprados em cada uma das sessões de usuário em que o número de itens comprados foi maior que 1.\n",
         "\n",
-        "# I bundled all of the products bought per session in a set because - unlike in a list - the order of the items don't matter.\n",
-        "# So if a customer bought first the product X and then product Y, or vice versa, it will not make a difference in the analysis.\n",
-        "# And not to mention that sets don't store repeat values... So as long as the user bought more than 1 item, the quantity purchased also won't affect the analysis.\n",
+        "# Agrupei todos os produtos comprados por sessão em um conjunto porque - ao contrário de uma lista - a ordem dos itens não importa.\n",
+        "# Portanto, se um cliente comprou primeiro o produto X e depois o produto Y, ou vice-versa, não fará diferença na análise.\n",
+        "# E vale ressaltar que os conjuntos não armazenam valores repetidos... Portanto, desde que o usuário compre mais de 1 item, a quantidade comprada também não afetará a análise.\n",
         "\n",
-        "# Admittedly, the code below gets a little complicated, if you know of an easier way to do this task, please reach out.\n",
+        "# Admito que o código abaixo fica um pouco complicado, se você souber de uma maneira mais fácil de fazer essa tarefa, por favor, entre em contato.\n",
         "\n",
-        "analysed_sessions = []\n",
-        "raw_xsell_combinations = []\n",
+        "sessoes_analisadas = []\n",
+        "combinacoes_venda_cruzada_brutas = []\n",
         "for user_session in session_purchases['user_session']:\n",
-        "    products_bought_by_id = []\n",
-        "    if user_session in analysed_sessions:\n",
+        "    produtos_comprados_por_id = []\n",
+        "    if user_session in sessoes_analisadas:\n",
         "        pass\n",
         "    else:\n",
-        "        nparray_products_bought = (session_purchases[session_purchases['user_session'] == user_session]['product_id'].values)\n",
-        "        list_products_bought = nparray_products_bought.tolist()\n",
-        "        products_bought_by_id.append(set(list_products_bought))\n",
-        "        raw_xsell_combinations.append(products_bought_by_id)\n",
-        "        analysed_sessions.append(user_session)\n",
+        "        nparray_produtos_comprados = (session_purchases[session_purchases['user_session'] == user_session]['product_id'].values)\n",
+        "        lista_produtos_comprados = nparray_produtos_comprados.tolist()\n",
+        "        produtos_comprados_por_id.append(set(lista_produtos_comprados))\n",
+        "        combinacoes_venda_cruzada_brutas.append(produtos_comprados_por_id)\n",
+        "        sessoes_analisadas.append(user_session)\n",
         "\n",
-        "# 5) Import itertools module in order to organize the sets (that reference the purchased products of each session) into a list\n",
+        "# 5) Importei o módulo itertools para organizar os conjuntos (que referenciam os produtos comprados de cada sessão) em uma lista\n",
         "\n",
         "from itertools import chain\n",
-        "xsell_combinations = list(chain.from_iterable(raw_xsell_combinations))\n",
+        "combinacoes_venda_cruzada = list(chain.from_iterable(combinacoes_venda_cruzada_brutas))\n",
         "\n",
+        "# 6) Por fim, contei o número de vendas de cada conjunto de produtos e descobri quais são os 10 melhores\n",
         "\n",
-        "# 6) Finally, count the number of sales of each product bundle and find out what are the top 10\n",
-        "\n",
-        "num_of_cross_sales = pd.DataFrame(pd.Series(xsell_combinations).value_counts())\n",
-        "num_of_cross_sales.reset_index(inplace=True)\n",
-        "num_of_cross_sales.rename(columns={'index':'products_bought',0:'num_of_sales'},inplace=True)\n",
-        "num_of_cross_sales.head(10).plot(kind='bar',x='products_bought',xlabel='Products Purchased in the Same Session',ylabel='Number of Purchases',title='Top 10 Products by Number of Cross-sells')"
+        "num_de_vendas_cruzadas = pd.DataFrame(pd.Series(combinacoes_venda_cruzada).value_counts())\n",
+        "num_de_vendas_cruzadas.reset_index(inplace=True)\n",
+        "num_de_vendas_cruzadas.rename(columns={'index': 'produtos_comprados', 0: 'num_de_vendas'}, inplace=True)\n",
+        "num_de_vendas_cruzadas.head(10).plot(kind='bar', x='produtos_comprados', xlabel='Produtos Comprados na Mesma Sessão', ylabel='Número de Compras', title='Top 10 Produtos por Número de Vendas Cruzadas')\n"
       ],
       "metadata": {
         "execution": {
@@ -444,16 +496,17 @@
     {
       "cell_type": "markdown",
       "source": [
-        "And those were the product groups with the most amount of cross-sells.\n",
-        "As you can probably tell already, most of these groups are comprised of only one product.\n",
+        "E essas foram as grupos de produtos com a maior quantidade de cross-sells.\n",
         "\n",
-        "Since we filtered only the sessions where more than 1 item was bought, this indicates that customers bought only one product in a given session but ended up purchasing multiple items of these same products.\n",
+        "Como você provavelmente já percebeu, a maioria desses grupos é composta por apenas um produto.\n",
         "\n",
-        "And so their most common upsell path seems to be offering more of the same, instead of offering different products.\n",
+        "Já que filtramos apenas as sessões em que mais de um item foi comprado, isso indica que os clientes compraram apenas um produto em uma determinada sessão, mas acabaram comprando vários itens desses mesmos produtos.\n",
         "\n",
-        "In case you are curious, we can also find out what are the actual product bundles (that is, those with 2 different products purchased) with the most amount of sales.\n",
+        "Portanto, o caminho de upsell mais comum parece ser oferecer mais do mesmo, em vez de oferecer produtos diferentes.\n",
         "\n",
-        "<h3> Most Sold Product Bundles </h3>"
+        "Caso você esteja curioso, também podemos descobrir quais são os pacotes de produtos reais (ou seja, aqueles com 2 produtos diferentes comprados) com a maior quantidade de vendas.\n",
+        "\n",
+        "<h3> Pacotes de Produtos Mais Vendidos </h3>"
       ],
       "metadata": {
         "id": "AO4nY_ZDDFGv"
@@ -462,19 +515,19 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Iterate over the num_of_cross_sales table and find out what are the bundles with len() > 1 (That is, indicating that multiple different products have been purchased in the same user session)\n",
+        "# 1) Iterar sobre a tabela num_of_cross_sales e descobrir quais são os conjuntos com len() > 1 (ou seja, indicando que vários produtos diferentes foram comprados na mesma sessão de usuário)\n",
         "\n",
-        "xsell_bundles = []\n",
-        "for bundle in xsell_combinations:\n",
-        "    if len(bundle) > 1:\n",
-        "        xsell_bundles.append(bundle)\n",
+        "vendas_cruzadas = []\n",
+        "for conjunto in num_of_cross_sales['products_bought']:\n",
+        "    if len(conjunto) > 1:\n",
+        "        vendas_cruzadas.append(conjunto)\n",
         "\n",
-        "# 2) Organize the bundles in a dataframe and count how many times they appear\n",
+        "# 2) Organizar os conjuntos em um DataFrame e contar quantas vezes eles aparecem\n",
         "\n",
-        "xsell_bundles = pd.DataFrame(pd.Series(xsell_bundles).value_counts())\n",
-        "xsell_bundles.reset_index(inplace=True)\n",
-        "xsell_bundles.rename(columns={'index':'product_bundle',0:'num_of_sales'},inplace=True)\n",
-        "xsell_bundles.sort_values(by='num_of_sales',ascending=False).head(10).plot(kind='bar',x='product_bundle')\n"
+        "vendas_cruzadas = pd.DataFrame(pd.Series(vendas_cruzadas).value_counts())\n",
+        "vendas_cruzadas.reset_index(inplace=True)\n",
+        "vendas_cruzadas.rename(columns={'index':'conjunto_de_produtos',0:'num_de_vendas'},inplace=True)\n",
+        "vendas_cruzadas.sort_values(by='num_de_vendas',ascending=False).head(10).plot(kind='bar',x='conjunto_de_produtos')\n"
       ],
       "metadata": {
         "execution": {
@@ -493,9 +546,9 @@
     {
       "cell_type": "markdown",
       "source": [
-        "As you can see, these are the products that - when coupled together - users have shown to buy the most.\n",
+        "Como você pode ver, esses são os produtos que - quando combinados - os usuários demonstraram comprar mais.\n",
         "\n",
-        "This is invaluable information for store managers to design high-converting upsell paths for their products. Maybe by adding an order bump or an easy add-to-cart button when users shop for one of these products.\n"
+        "Essas informações são inestimáveis para os gerentes de lojas projetarem caminhos de upsell de alto desempenho para seus produtos. Talvez adicionando um pedido adicional ou um botão fácil de adicionar ao carrinho quando os usuários comprarem um desses produtos."
       ],
       "metadata": {
         "id": "QbgQVROSDFGv"
@@ -504,11 +557,11 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3> Average Order Value </h3>\n",
+        "<h3>Valor Médio do Pedido</h3>\n",
         "\n",
-        "Now, speaking of upsells and cross-sells, we can also use the data to find out what is the average order value.\n",
+        "Agora, falando sobre upsells e cross-sells, também podemos usar os dados para descobrir qual é o valor médio do pedido.\n",
         "\n",
-        "So let's find out:"
+        "Então, vamos descobrir:"
       ],
       "metadata": {
         "id": "neSouBetDFGv"
@@ -517,21 +570,21 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Merged products table with the sessions_on_events table in order to group the products bought by each individual user_session\n",
+        "# 1) Juntei a tabela de produtos (products) com a tabela sessions_on_events para agrupar os produtos comprados por cada sessão de usuário individual\n",
         "\n",
-        "products_bought_by_session = sessions_on_events[sessions_on_events['event_type'] == 'purchase'][['user_session','product_id']]\n",
-        "session_and_price = products_bought_by_session.merge(products,how='left',left_on='product_id',right_on='product_id')[['user_session','price']]\n",
+        "produtos_comprados_por_sessao = sessions_on_events[sessions_on_events['event_type'] == 'purchase'][['user_session', 'product_id']]\n",
+        "sessao_e_preco = produtos_comprados_por_sessao.merge(products, how='left', left_on='product_id', right_on='product_id')[['user_session', 'price']]\n",
         "\n",
-        "# 2) Grouped by user_session and summed the price of goods purchased\n",
+        "# 2) Agrupei por user_session e somei o preço dos produtos comprados\n",
         "\n",
-        "sum_products_bought_per_session = session_and_price.groupby(by='user_session').sum()\n",
-        "sum_products_bought_per_session.sort_values(by='price',ascending=False)\n",
+        "soma_produtos_comprados_por_sessao = sessao_e_preco.groupby(by='user_session').sum()\n",
+        "soma_produtos_comprados_por_sessao.sort_values(by='price', ascending=False)\n",
         "\n",
-        "# 3) Divided the price of all purchased products by the number of sessions that resulted in a purchase\n",
+        "# 3) Dividi o preço de todos os produtos comprados pelo número de sessões que resultaram em uma compra\n",
         "\n",
-        "aov = sum_products_bought_per_session.sum()/len(sum_products_bought_per_session.index)\n",
+        "aov = soma_produtos_comprados_por_sessao.sum() / len(soma_produtos_comprados_por_sessao.index)\n",
         "\n",
-        "print(f\"The Average Order Value of each purchase is {aov}!\")"
+        "print(f\"O Valor Médio do Pedido (Average Order Value - AOV) de cada compra é {aov}!\")\n"
       ],
       "metadata": {
         "execution": {
@@ -550,11 +603,8 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3> Number of purchases per customer </h3>\n",
-        "\n",
-        "Unfortunately, looking at the Average Order Value does not tell the whole story, since this metric doesn't account for the fact that some customers make more than one purchase and keep coming back.\n",
-        "\n",
-        "So let's take a look at two important metrics of customer retention: The average number of purchases per customer and the average Customer Lifetime Value.\n"
+        "<h3>Número de Compras por Cliente</h3>\n",
+        "\n"
       ],
       "metadata": {
         "id": "EOKNM4nPDFGv"
@@ -563,15 +613,15 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Left joined the user_id on the session_and_price table in order to count the unique values\n",
+        "# 1) Realizei um left join do user_id na tabela session_and_price para contar os valores únicos\n",
         "\n",
-        "purchase_sessions_and_customers = session_and_price.merge(user_sessions,how='left',left_on='user_session',right_index=True)\n",
+        "sessoes_de_compra_e_clientes = session_and_price.merge(user_sessions, how='left', left_on='user_session', right_index=True)\n",
         "\n",
-        "# 2) Divided the number of unique sessions that resulted in a purchase by the number of customers\n",
+        "# 2) Dividi o número de sessões únicas que resultaram em uma compra pelo número de clientes\n",
         "\n",
-        "purchase_p_customer = purchase_sessions_and_customers['user_session'].nunique()/purchase_sessions_and_customers['user_id'].nunique()\n",
+        "compras_por_cliente = sessoes_de_compra_e_clientes['user_session'].nunique() / sessoes_de_compra_e_clientes['user_id'].nunique()\n",
         "\n",
-        "print(f\"The Average number of purchases per customer is {purchase_p_customer}!\")"
+        "print(f\"A média de compras por cliente é {compras_por_cliente}!\")\n"
       ],
       "metadata": {
         "execution": {
@@ -590,7 +640,8 @@
     {
       "cell_type": "markdown",
       "source": [
-        "<h3> Customer Lifetime Value </h3>"
+        "<h3>Valor do Tempo de Vida do Cliente</h3>\n",
+        "O Valor do Tempo de Vida do Cliente (Customer Lifetime Value - LTV) é uma métrica importante para avaliar o valor que um cliente médio traz para o seu negócio ao longo do tempo. É uma medida fundamental para entender o retorno do investimento em aquisição de clientes e para desenvolver estratégias de retenção de clientes."
       ],
       "metadata": {
         "id": "L-s_4o1mDFGw"
@@ -599,16 +650,15 @@
     {
       "cell_type": "code",
       "source": [
-        "# 1) Found out how much each customer spent on the store\n",
+        "# 1) Descobri quanto cada cliente gastou na loja\n",
         "\n",
-        "totalspent_by_user = purchase_sessions_and_customers[['user_id','price']].groupby(by='user_id').sum().sort_values(by='price',ascending=False)\n",
+        "total_gasto_por_usuario = purchase_sessions_and_customers[['user_id', 'price']].groupby(by='user_id').sum().sort_values(by='price', ascending=False)\n",
         "\n",
+        "# 2) Dividi o total gasto pelo número de clientes\n",
         "\n",
-        "# 2) Divided the total spent by the number of customers\n",
+        "ltv = total_gasto_por_usuario.sum() / len(total_gasto_por_usuario.index)\n",
         "\n",
-        "ltv = totalspent_by_user.sum()/len(totalspent_by_user.index)\n",
-        "\n",
-        "print(f\"The customer Lifetime Value is {ltv}!\")"
+        "print(f\"O Valor do Tempo de Vida do Cliente (LTV) é {ltv}!\")\n"
       ],
       "metadata": {
         "execution": {
@@ -623,26 +673,6 @@
       },
       "execution_count": null,
       "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "source": [
-        "<h2> Closing Remarks </h2>\n",
-        "\n",
-        "It's important to consider that this analysis does not represent the overall performance of the store, since we could barely load a month's worth of data. So treat it as only a snapshot.\n",
-        "\n",
-        "But it bears repeating that even though we are working with only a fraction of the data, the code remains the same if you use a machine with more memory and manage to run the entire dataset.\n",
-        "\n",
-        "\n",
-        "Thanks for reading this far into the notebook. Hope you've also learned a thing or two.\n",
-        "\n",
-        "<h2> Got any doubts? Tips? Ideas? Feel free to reach out! </h2>\n",
-        "\n",
-        "*Took the code that compares the memory usage between tables from one of [@varshnidevi](https://www.kaggle.com/varshnidevi) notebooks. Thanks a lot!"
-      ],
-      "metadata": {
-        "id": "sUcqjxScDFGw"
-      }
     }
   ]
 }
