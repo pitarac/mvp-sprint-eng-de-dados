@@ -1,0 +1,648 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "language": "python",
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "pygments_lexer": "ipython3",
+      "nbconvert_exporter": "python",
+      "version": "3.6.4",
+      "file_extension": ".py",
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "name": "python",
+      "mimetype": "text/x-python"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat_minor": 0,
+  "nbformat": 4,
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/pitarac/mvp-sprint-eng-de-dados/blob/main/fase-5/notebook\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# **Análise das Principais Métricas de E-commerce**\n",
+        "\n",
+        "O objetivo deste notebook é analisar os principais indicadores de desempenho da loja e também encontrar insights a partir dos dados que podem ajudar a loja a melhorar sua receita e metas de desempenho.\n",
+        "\n",
+        "Aqui estão algumas das perguntas que vou responder:\n",
+        "- **Top 10 Produtos com Maior Faturamento**\n",
+        "- **Top 10 Produtos por Lucro por Sessão**\n",
+        "- **Top 10 Produtos por Taxas de Conversão**\n",
+        "\n",
+        "\n",
+        "Se você encontrar algum erro na minha lógica, redundância no código, tiver algumas dicas para compartilhar ou simplesmente quiser bater um papo, por favor, entre em contato, estou ansioso para ouvir de você.\n",
+        "\n",
+        "Agora, sem mais delongas, vamos mergulhar no notebook.\n"
+      ],
+      "metadata": {
+        "id": "ZadDHod8DFGp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Importando Bibliotecas e Preparando os Dados\n",
+        "\n",
+        "Primeiro, vamos importar algumas bibliotecas Python bem conhecidas para nos ajudar a analisar todos esses dados. Em seguida, vamos carregar tudo em um DataFrame chamado `raw_events_data`.\n",
+        "\n",
+        "Infelizmente, este conjunto de dados é extremamente grande (+14GB com mais de 100 milhões de linhas), e o kernel sempre ficava sem memória ao tentar carregar tantos dados. Portanto, para fins desta análise, trabalharemos apenas com as primeiras 10 milhões de linhas do arquivo de outubro de 2019. No entanto, todo o código permanece o mesmo, independentemente de quantas linhas você queira analisar.\n"
+      ],
+      "metadata": {
+        "id": "VTX8uL0oDFGr"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib as plt\n",
+        "import numpy as np\n",
+        "import gc\n",
+        "import os\n",
+        "\n",
+        "# Fazendo o download dos arquivos do Google Cloud Storage para a máquina local\n",
+        "os.system('gsutil -m cp \"gs://mpvsprint3/2019-Nov.csv\" .')\n",
+        "os.system('gsutil -m cp \"gs://mpvsprint3/2019-Oct.csv\" .')\n",
+        "\n",
+        "# Carregando os dados em um DataFrame pandas\n",
+        "raw_events_data = pd.read_csv('2019-Nov.csv', parse_dates=['event_time'], nrows=10000000)\n",
+        "raw_events_data.info()\n"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:17:25.203825Z",
+          "iopub.execute_input": "2022-04-12T14:17:25.204152Z",
+          "iopub.status.idle": "2022-04-12T14:20:18.115881Z",
+          "shell.execute_reply.started": "2022-04-12T14:17:25.204122Z",
+          "shell.execute_reply": "2022-04-12T14:20:18.114732Z"
+        },
+        "trusted": true,
+        "id": "UoQgf72mDFGs"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### Preparando os Dados\n",
+        "\n",
+        "Atualmente, a tabela com a qual estamos trabalhando (`raw_events_data`) armazena todas as informações dos produtos, sessões do site e eventos do site.\n",
+        "\n",
+        "\n",
+        "Infelizmente, a forma como esta tabela está estruturada leva ao armazenamento de muitos dados redundantes, tornando nossa análise muito mais lenta e dificultando a compreensão dos dados.\n",
+        "\n",
+        "Então, antes de realmente começarmos a buscar insights, vamos transformar essa grande tabela desajeitada em 3 menores, aplicando alguns princípios de normalização.\n",
+        "\n",
+        "Depois de normalizarmos a tabela, acabaremos com 3 tabelas diferentes, que são:\n",
+        "1. `products`: Armazena informações únicas dos produtos\n",
+        "2. `user_sessions`: Armazena informações únicas das sessões do site\n",
+        "3. `events`: Armazena informações únicas dos eventos do site\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "hh8v2rcnDFGs"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "RiJZ6wDYGJgY"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "# Criando as Tabelas\n",
+        "\n",
+        "## Tabela `products`\n",
+        "```python\n",
+        "products = raw_events_data[['product_id', 'category_id', 'category_code', 'brand', 'price']].drop_duplicates()\n",
+        "products.set_index('product_id', inplace=True)\n",
+        "```\n",
+        "\n",
+        "## Tabela `user_sessions`\n",
+        "```python\n",
+        "user_sessions = raw_events_data[['user_session', 'user_id']].drop_duplicates()\n",
+        "user_sessions.set_index('user_session', inplace=True)\n",
+        "```\n",
+        "\n",
+        "## Tabela `events`\n",
+        "```python\n",
+        "events = raw_events_data[['event_time', 'event_type', 'product_id', 'user_session']]\n",
+        "````"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:20:18.118155Z",
+          "iopub.execute_input": "2022-04-12T14:20:18.11865Z",
+          "iopub.status.idle": "2022-04-12T14:20:29.564223Z",
+          "shell.execute_reply.started": "2022-04-12T14:20:18.118599Z",
+          "shell.execute_reply": "2022-04-12T14:20:29.563503Z"
+        },
+        "trusted": true,
+        "id": "evlmafVADFGt"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Agora que temos 3 tabelas diferentes seguindo princípios padrões de normalização - em vez de um conjunto de dados grande e desajeitado - vamos descobrir quanto de memória conseguimos economizar.\n"
+      ],
+      "metadata": {
+        "id": "mk_EWa2FDFGt"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Dividindo o uso total de memória das 3 tabelas normalizadas pelo uso de memória da tabela com a qual começamos nossa análise\n",
+        "\n",
+        "```python\n",
+        "comparative_memory_usage = round((1-(user_sessions.memory_usage().sum() + products.memory_usage().sum() + events.memory_usage().sum())/raw_events_data.memory_usage().sum())*100,2)\n",
+        "\n",
+        "del raw_events_data\n",
+        "gc.collect()\n",
+        "\n",
+        "print(f\"As 3 tabelas normalizadas nos ajudam a economizar {comparative_memory_usage}% em espaço!\")\n"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:20:29.565687Z",
+          "iopub.execute_input": "2022-04-12T14:20:29.56594Z",
+          "iopub.status.idle": "2022-04-12T14:20:29.835933Z",
+          "shell.execute_reply.started": "2022-04-12T14:20:29.56591Z",
+          "shell.execute_reply": "2022-04-12T14:20:29.834786Z"
+        },
+        "trusted": true,
+        "id": "4oektb2dDFGt"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Como você pode ver, economizamos muito espaço, o que será muito útil para esta loja de e-commerce se ela quiser dimensionar o banco de dados e começar a armazenar outros pontos de dados (como fontes de tráfego, custo dos produtos vendidos, etc).\n",
+        "\n",
+        "E agora que preparamos os dados, vamos finalmente começar a analisar os números em busca de insights.\n",
+        "\n",
+        "***\n",
+        "\n",
+        "## Inteligência de Produto\n",
+        "\n",
+        "### Produto Mais Rentável\n",
+        "\n",
+        "Para começar nossa análise, vamos descobrir quais são os 10 produtos mais rentáveis da nossa loja, ou seja, os produtos que geram a maior quantidade de dinheiro em termos de receita...\n"
+      ],
+      "metadata": {
+        "id": "0gQCBRQmDFGt"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Mesclar a tabela `events` com a tabela `products`\n",
+        "# 2) Agrupar todos os eventos de compra pelo `product_id`\n",
+        "# 3) Somar o preço de todas as suas vendas\n",
+        "\n",
+        "```python\n",
+        "events_on_products = events.merge(products, how='left', left_on = 'product_id', right_index=True)\n",
+        "events_on_products[events_on_products['event_type'] == 'purchase'][['product_id', 'price']].groupby(by='product_id').sum().sort_values(by='price', ascending=False).head(10).plot(kind='bar', title='Top 10 Produtos Por Receita', xlabel='Product_id', ylabel='Receita Total ($)')\n"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:20:29.837886Z",
+          "iopub.execute_input": "2022-04-12T14:20:29.838161Z",
+          "iopub.status.idle": "2022-04-12T14:21:05.03728Z",
+          "shell.execute_reply.started": "2022-04-12T14:20:29.83813Z",
+          "shell.execute_reply": "2022-04-12T14:21:05.036214Z"
+        },
+        "trusted": true,
+        "id": "BSkwHLqADFGu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3 > Highest Earnings Per Session </h3>\n",
+        "\n",
+        "Now, total revenue is not a meaningful metric on its own, especially if we ignore the number of sessions that landed on the product page.\n",
+        "\n",
+        "After all, if you are sending a lot of traffic to a page that is doing a poor job at converting users, you could easily be leaving money on the table.\n",
+        "\n",
+        "So, to account for the fact that different products have different conversion rates, let's find out what are the top 10 products by earnings per session."
+      ],
+      "metadata": {
+        "id": "G_9311hIDFGu"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Created a dataframe to find out the total number of views per product_id\n",
+        "\n",
+        "num_of_views = pd.DataFrame(\n",
+        "    data = events_on_products[events_on_products['event_type'] == 'view']['product_id'].value_counts()\n",
+        ")\n",
+        "num_of_views.rename(columns={'product_id':'total_views'},inplace=True)\n",
+        "\n",
+        "# 2) Created a dataframe to find out how much each product made in revenue\n",
+        "\n",
+        "revenue_per_product = events_on_products[events_on_products['event_type'] == 'purchase'][['product_id','price']].groupby(by='product_id').sum().sort_values(by='price',ascending=False)\n",
+        "revenue_per_product.rename(columns={'price':'total_revenue'},inplace=True)\n",
+        "\n",
+        "# 3) Merged both of the dataframes above in order to group products by their id, and then divided the total revenue by the number of views\n",
+        "\n",
+        "revenue_and_views = revenue_per_product.merge(num_of_views,left_index=True,right_index=True)\n",
+        "revenue_per_view = revenue_and_views['total_revenue']/revenue_and_views['total_views']\n",
+        "\n",
+        "revenue_per_view.sort_values(ascending=False).head(10).plot(kind='bar',title='Top 10 Products by Earnings Per Session',xlabel='Product_id',ylabel='Average Earnings Per Session ($)')"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:21:05.038708Z",
+          "iopub.execute_input": "2022-04-12T14:21:05.039055Z",
+          "iopub.status.idle": "2022-04-12T14:21:27.35578Z",
+          "shell.execute_reply.started": "2022-04-12T14:21:05.039014Z",
+          "shell.execute_reply": "2022-04-12T14:21:27.355204Z"
+        },
+        "trusted": true,
+        "id": "rD7BJ_HODFGu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3> Conversion Rates Per Product </h3>\n",
+        "\n",
+        "We can also find out what are the products with the highest conversion rates, since these products could also be worth pushing traffic to and their landing page designs be used as controls in A/B split tests.\n",
+        "\n",
+        "So let's discover what are the top 10 products with the highest conversion rates."
+      ],
+      "metadata": {
+        "id": "5MSyXS-dDFGu"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Found out how many sales each product made\n",
+        "\n",
+        "num_of_sales = pd.Series(events_on_products[events_on_products['event_type'] == 'purchase']['product_id'].value_counts())\n",
+        "num_of_sales.rename('total_sales',inplace=True)\n",
+        "\n",
+        "# 2) Grouped the number of views and the number of sales by the product_id\n",
+        "\n",
+        "product_data = revenue_and_views.merge(num_of_sales,right_index=True,left_index=True)\n",
+        "\n",
+        "# 3) Divided the number of sales by the number of views and found out the conversion rate of all the products\n",
+        "\n",
+        "cvr = pd.Series(product_data['total_sales']/product_data['total_views'])\n",
+        "top_10_cvr = cvr.sort_values(ascending=False).head(10)\n",
+        "top_10_cvr.plot(kind='bar',title='Top 10 Products by Conversion Rates',xlabel='Product_id',ylabel='Conversion Rate (from 0 to 1)')"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:21:27.356921Z",
+          "iopub.execute_input": "2022-04-12T14:21:27.357375Z",
+          "iopub.status.idle": "2022-04-12T14:21:35.330745Z",
+          "shell.execute_reply.started": "2022-04-12T14:21:27.357341Z",
+          "shell.execute_reply": "2022-04-12T14:21:35.329728Z"
+        },
+        "trusted": true,
+        "id": "qwIDyLr6DFGu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "As you can see, these products have a 100% conversion rate, and that's not an error in the code or in the analysis.\n",
+        "\n",
+        "This happened because these products only have 1 view event in the analyzed timeframe and - as luck would have it - this view resulted in a purchase. However, if we could load more data, I'm certain this pattern would not hold true.\n"
+      ],
+      "metadata": {
+        "id": "tpVPGhuPDFGu"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3> Products That Sell Well Together </h3>\n",
+        "\n",
+        "Upsells, downsells, and cross-sells are one of the most reliable ways to increase the average cart value of the customer.\n",
+        "\n",
+        "But in order to optimize them, the products offered cannot be picked at random. After all, each and every product caters to different customer avatars, and trying to use a one size fits all approach on the upsell path is a guaranteed way to leave money on the table.\n",
+        "\n",
+        "So let's dig into the data and find out what products users tend to buy in the same session."
+      ],
+      "metadata": {
+        "id": "OeEjMTL2DFGv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Merged the user_sessions table with the events table\n",
+        "\n",
+        "sessions_on_events = user_sessions.merge(events,how='left',left_on='user_session',right_on='user_session')\n",
+        "\n",
+        "# 2) Filtered the table above looking for purchase events, then counted the number of items bought per user_session\n",
+        "\n",
+        "items_bought_per_session = pd.DataFrame(sessions_on_events[sessions_on_events['event_type'] == 'purchase']['user_session'].value_counts())\n",
+        "items_bought_per_session.reset_index(inplace=True)\n",
+        "items_bought_per_session.rename(columns={'user_session':'items_bought','index':'user_session'},inplace=True)\n",
+        "items_bought_per_session.head(5)\n",
+        "\n",
+        "# 3) Created a table full of sessions with more than 1 item purchased\n",
+        "\n",
+        "session_purchases = items_bought_per_session[items_bought_per_session['items_bought']>=2].merge(\n",
+        "    sessions_on_events[sessions_on_events['event_type'] == 'purchase'],\n",
+        "    how='left',\n",
+        "    left_on='user_session',\n",
+        "    right_on='user_session')[['user_session','items_bought','product_id']]\n",
+        "\n",
+        "# 4) Bundle together in a set all the products (by id) bought in each of the user sessions where the number of items purchased was greater than 1.\n",
+        "\n",
+        "# I bundled all of the products bought per session in a set because - unlike in a list - the order of the items don't matter.\n",
+        "# So if a customer bought first the product X and then product Y, or vice versa, it will not make a difference in the analysis.\n",
+        "# And not to mention that sets don't store repeat values... So as long as the user bought more than 1 item, the quantity purchased also won't affect the analysis.\n",
+        "\n",
+        "# Admittedly, the code below gets a little complicated, if you know of an easier way to do this task, please reach out.\n",
+        "\n",
+        "analysed_sessions = []\n",
+        "raw_xsell_combinations = []\n",
+        "for user_session in session_purchases['user_session']:\n",
+        "    products_bought_by_id = []\n",
+        "    if user_session in analysed_sessions:\n",
+        "        pass\n",
+        "    else:\n",
+        "        nparray_products_bought = (session_purchases[session_purchases['user_session'] == user_session]['product_id'].values)\n",
+        "        list_products_bought = nparray_products_bought.tolist()\n",
+        "        products_bought_by_id.append(set(list_products_bought))\n",
+        "        raw_xsell_combinations.append(products_bought_by_id)\n",
+        "        analysed_sessions.append(user_session)\n",
+        "\n",
+        "# 5) Import itertools module in order to organize the sets (that reference the purchased products of each session) into a list\n",
+        "\n",
+        "from itertools import chain\n",
+        "xsell_combinations = list(chain.from_iterable(raw_xsell_combinations))\n",
+        "\n",
+        "\n",
+        "# 6) Finally, count the number of sales of each product bundle and find out what are the top 10\n",
+        "\n",
+        "num_of_cross_sales = pd.DataFrame(pd.Series(xsell_combinations).value_counts())\n",
+        "num_of_cross_sales.reset_index(inplace=True)\n",
+        "num_of_cross_sales.rename(columns={'index':'products_bought',0:'num_of_sales'},inplace=True)\n",
+        "num_of_cross_sales.head(10).plot(kind='bar',x='products_bought',xlabel='Products Purchased in the Same Session',ylabel='Number of Purchases',title='Top 10 Products by Number of Cross-sells')"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:21:35.332194Z",
+          "iopub.execute_input": "2022-04-12T14:21:35.332713Z",
+          "iopub.status.idle": "2022-04-12T14:26:14.078628Z",
+          "shell.execute_reply.started": "2022-04-12T14:21:35.33268Z",
+          "shell.execute_reply": "2022-04-12T14:26:14.077602Z"
+        },
+        "trusted": true,
+        "id": "jZadBKkzDFGv"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "And those were the product groups with the most amount of cross-sells.\n",
+        "As you can probably tell already, most of these groups are comprised of only one product.\n",
+        "\n",
+        "Since we filtered only the sessions where more than 1 item was bought, this indicates that customers bought only one product in a given session but ended up purchasing multiple items of these same products.\n",
+        "\n",
+        "And so their most common upsell path seems to be offering more of the same, instead of offering different products.\n",
+        "\n",
+        "In case you are curious, we can also find out what are the actual product bundles (that is, those with 2 different products purchased) with the most amount of sales.\n",
+        "\n",
+        "<h3> Most Sold Product Bundles </h3>"
+      ],
+      "metadata": {
+        "id": "AO4nY_ZDDFGv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Iterate over the num_of_cross_sales table and find out what are the bundles with len() > 1 (That is, indicating that multiple different products have been purchased in the same user session)\n",
+        "\n",
+        "xsell_bundles = []\n",
+        "for bundle in xsell_combinations:\n",
+        "    if len(bundle) > 1:\n",
+        "        xsell_bundles.append(bundle)\n",
+        "\n",
+        "# 2) Organize the bundles in a dataframe and count how many times they appear\n",
+        "\n",
+        "xsell_bundles = pd.DataFrame(pd.Series(xsell_bundles).value_counts())\n",
+        "xsell_bundles.reset_index(inplace=True)\n",
+        "xsell_bundles.rename(columns={'index':'product_bundle',0:'num_of_sales'},inplace=True)\n",
+        "xsell_bundles.sort_values(by='num_of_sales',ascending=False).head(10).plot(kind='bar',x='product_bundle')\n"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:26:14.080088Z",
+          "iopub.execute_input": "2022-04-12T14:26:14.080366Z",
+          "iopub.status.idle": "2022-04-12T14:26:22.269392Z",
+          "shell.execute_reply.started": "2022-04-12T14:26:14.080331Z",
+          "shell.execute_reply": "2022-04-12T14:26:22.268678Z"
+        },
+        "trusted": true,
+        "id": "E_qN6uL9DFGv"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "As you can see, these are the products that - when coupled together - users have shown to buy the most.\n",
+        "\n",
+        "This is invaluable information for store managers to design high-converting upsell paths for their products. Maybe by adding an order bump or an easy add-to-cart button when users shop for one of these products.\n"
+      ],
+      "metadata": {
+        "id": "QbgQVROSDFGv"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3> Average Order Value </h3>\n",
+        "\n",
+        "Now, speaking of upsells and cross-sells, we can also use the data to find out what is the average order value.\n",
+        "\n",
+        "So let's find out:"
+      ],
+      "metadata": {
+        "id": "neSouBetDFGv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Merged products table with the sessions_on_events table in order to group the products bought by each individual user_session\n",
+        "\n",
+        "products_bought_by_session = sessions_on_events[sessions_on_events['event_type'] == 'purchase'][['user_session','product_id']]\n",
+        "session_and_price = products_bought_by_session.merge(products,how='left',left_on='product_id',right_on='product_id')[['user_session','price']]\n",
+        "\n",
+        "# 2) Grouped by user_session and summed the price of goods purchased\n",
+        "\n",
+        "sum_products_bought_per_session = session_and_price.groupby(by='user_session').sum()\n",
+        "sum_products_bought_per_session.sort_values(by='price',ascending=False)\n",
+        "\n",
+        "# 3) Divided the price of all purchased products by the number of sessions that resulted in a purchase\n",
+        "\n",
+        "aov = sum_products_bought_per_session.sum()/len(sum_products_bought_per_session.index)\n",
+        "\n",
+        "print(f\"The Average Order Value of each purchase is {aov}!\")"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:26:22.270861Z",
+          "iopub.execute_input": "2022-04-12T14:26:22.271318Z",
+          "iopub.status.idle": "2022-04-12T14:26:25.136482Z",
+          "shell.execute_reply.started": "2022-04-12T14:26:22.271284Z",
+          "shell.execute_reply": "2022-04-12T14:26:25.135355Z"
+        },
+        "trusted": true,
+        "id": "moRubHmzDFGv"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3> Number of purchases per customer </h3>\n",
+        "\n",
+        "Unfortunately, looking at the Average Order Value does not tell the whole story, since this metric doesn't account for the fact that some customers make more than one purchase and keep coming back.\n",
+        "\n",
+        "So let's take a look at two important metrics of customer retention: The average number of purchases per customer and the average Customer Lifetime Value.\n"
+      ],
+      "metadata": {
+        "id": "EOKNM4nPDFGv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Left joined the user_id on the session_and_price table in order to count the unique values\n",
+        "\n",
+        "purchase_sessions_and_customers = session_and_price.merge(user_sessions,how='left',left_on='user_session',right_index=True)\n",
+        "\n",
+        "# 2) Divided the number of unique sessions that resulted in a purchase by the number of customers\n",
+        "\n",
+        "purchase_p_customer = purchase_sessions_and_customers['user_session'].nunique()/purchase_sessions_and_customers['user_id'].nunique()\n",
+        "\n",
+        "print(f\"The Average number of purchases per customer is {purchase_p_customer}!\")"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:26:25.139612Z",
+          "iopub.execute_input": "2022-04-12T14:26:25.139956Z",
+          "iopub.status.idle": "2022-04-12T14:26:27.299275Z",
+          "shell.execute_reply.started": "2022-04-12T14:26:25.139913Z",
+          "shell.execute_reply": "2022-04-12T14:26:27.298217Z"
+        },
+        "trusted": true,
+        "id": "pvRENkRCDFGw"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h3> Customer Lifetime Value </h3>"
+      ],
+      "metadata": {
+        "id": "L-s_4o1mDFGw"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1) Found out how much each customer spent on the store\n",
+        "\n",
+        "totalspent_by_user = purchase_sessions_and_customers[['user_id','price']].groupby(by='user_id').sum().sort_values(by='price',ascending=False)\n",
+        "\n",
+        "\n",
+        "# 2) Divided the total spent by the number of customers\n",
+        "\n",
+        "ltv = totalspent_by_user.sum()/len(totalspent_by_user.index)\n",
+        "\n",
+        "print(f\"The customer Lifetime Value is {ltv}!\")"
+      ],
+      "metadata": {
+        "execution": {
+          "iopub.status.busy": "2022-04-12T14:26:27.300425Z",
+          "iopub.execute_input": "2022-04-12T14:26:27.300635Z",
+          "iopub.status.idle": "2022-04-12T14:26:27.398416Z",
+          "shell.execute_reply.started": "2022-04-12T14:26:27.30061Z",
+          "shell.execute_reply": "2022-04-12T14:26:27.397459Z"
+        },
+        "trusted": true,
+        "id": "JH88FPucDFGw"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "<h2> Closing Remarks </h2>\n",
+        "\n",
+        "It's important to consider that this analysis does not represent the overall performance of the store, since we could barely load a month's worth of data. So treat it as only a snapshot.\n",
+        "\n",
+        "But it bears repeating that even though we are working with only a fraction of the data, the code remains the same if you use a machine with more memory and manage to run the entire dataset.\n",
+        "\n",
+        "\n",
+        "Thanks for reading this far into the notebook. Hope you've also learned a thing or two.\n",
+        "\n",
+        "<h2> Got any doubts? Tips? Ideas? Feel free to reach out! </h2>\n",
+        "\n",
+        "*Took the code that compares the memory usage between tables from one of [@varshnidevi](https://www.kaggle.com/varshnidevi) notebooks. Thanks a lot!"
+      ],
+      "metadata": {
+        "id": "sUcqjxScDFGw"
+      }
+    }
+  ]
+}
