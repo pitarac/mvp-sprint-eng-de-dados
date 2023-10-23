@@ -8,7 +8,7 @@ Na avaliação da qualidade de dados, examinei minuciosamente cada atributo do c
 
 A qualidade dos dados desempenhou um papel fundamental, garantindo que os dados fossem confiáveis e bem organizados, o que economizou tempo valioso durante a análise.
 
-[Print da Tela do BigQuery](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/bigquery.png).
+![Print da Tela do BigQuery](https://storage.googleapis.com/ecommerce-behavior/Imangens%20/bigquery.png).
 
 
 ### b. Solução do Problema
